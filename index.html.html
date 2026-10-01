@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>네이버 앱에서 상품 보기</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 24px; font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Segoe UI",sans-serif;
+      background: #f5f6f7; color: #111;
+    }
+    .card {
+      width: 100%; max-width: 460px; background: white; border-radius: 24px;
+      padding: 34px 24px; box-shadow: 0 10px 35px rgba(0,0,0,.08); text-align: center;
+    }
+    .n { font-size: 42px; font-weight: 900; margin-bottom: 12px; }
+    h1 { font-size: 25px; margin: 0 0 10px; }
+    p { margin: 0 0 26px; color: #666; line-height: 1.6; }
+    a {
+      display: block; text-decoration: none; border-radius: 14px; padding: 17px 16px;
+      font-size: 17px; font-weight: 800; margin-top: 12px;
+    }
+    #naver { background: #03c75a; color: white; }
+    #web { background: #eef0f2; color: #222; }
+    small { display: block; margin-top: 20px; color: #999; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="n">N</div>
+    <h1>네이버 앱에서 상품 보기</h1>
+    <p>네이버 앱으로 열면 기존 로그인 상태를 이용할 수 있습니다.</p>
+    <a id="naver" href="naversearchapp://inappbrowser?url=https%3A%2F%2Fsmartstore.naver.com%2Fbasic-lab%2Fproducts%2F10908968887&target=new&version=6">네이버 앱으로 열기</a>
+    <a id="web" href="https://smartstore.naver.com/basic-lab/products/10908968887">스마트스토어 웹으로 보기</a>
+    <small>네이버 앱이 열리지 않으면 아래 ‘스마트스토어 웹으로 보기’를 눌러주세요.</small>
+  </main>
+<script>
+  const androidIntent = 'intent://inappbrowser?url=https%3A%2F%2Fsmartstore.naver.com%2Fbasic-lab%2Fproducts%2F10908968887&target=new&version=6#Intent;scheme=naversearchapp;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.nhn.android.search;end';
+  const naverScheme = 'naversearchapp://inappbrowser?url=https%3A%2F%2Fsmartstore.naver.com%2Fbasic-lab%2Fproducts%2F10908968887&target=new&version=6';
+  document.getElementById("naver").addEventListener("click", function(e) {
+    e.preventDefault();
+    const ua = navigator.userAgent || "";
+    if (/Android/i.test(ua)) {
+      location.href = androidIntent;
+    } else {
+      location.href = naverScheme;
+    }
+  });
+</script>
+</body>
+</html>
